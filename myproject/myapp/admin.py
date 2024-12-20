@@ -1,8 +1,13 @@
 from django.contrib import admin
-from django.db import models
+from .models import Team, Person, Osoba, Stanowisko
 
-from .models import Team, Person
+
+class OsobaAdmin(admin.ModelAdmin):
+    list_display = ['imie', 'nazwisko']
+    readonly_fields = ['data_dodania']
+
 
 admin.site.register(Team)
 admin.site.register(Person)
-
+admin.site.register(Osoba, OsobaAdmin)
+admin.site.register(Stanowisko)
